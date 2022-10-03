@@ -1,14 +1,17 @@
 import { Component } from "react";
 import { useParams } from "react-router-dom";
+import Carousel from "./Carousel";
 
 class Details extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      loading: true,
-    };
-  }
+  //   this.state = {
+  //     loading: true,
+  //   };
+  // }
+  // is equivalent to this: (thanks to babel class properties)
+  state = { loading: true };
 
   // This is a lifecycle method that runs after the component is rendered
   async componentDidMount() {
@@ -25,10 +28,11 @@ class Details extends Component {
       return <h2>loading...</h2>;
     }
 
-    const { animal, breed, city, state, description, name } = this.state;
+    const { animal, breed, city, state, description, name, images } = this.state;
 
     return (
       <div classNmae="details">
+        <Carousel images={images} />
         <div>
           <h1>{name}</h1>
           <h2>
